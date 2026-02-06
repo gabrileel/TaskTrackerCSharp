@@ -24,6 +24,35 @@ namespace TaskTrackerCSharp
             tasks.Add(newTask);
         }
 
+        public void EditTaskDescription(int id, string description)
+        {
+            DateTime actualDate = DateTime.Now;
+            foreach (var task in tasks)
+            {
+                if (task.Id == id)
+                {
+                    task.Description = description;
+                    break;
+                }
+            }
+        }
+
+        public void EditTaskStatus(EStatus newStatus, int id)
+        {
+            switch (newStatus)
+            {
+                case EStatus.InProgress:
+                    {
+                        break;
+                    }
+                case EStatus.Done:
+                    {
+                        break;
+                    }
+                default: break;
+            }
+        }
+
         public void ShowFullList()
         {
             foreach (var task in tasks)
