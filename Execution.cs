@@ -17,20 +17,16 @@ namespace TaskTrackerCSharp
             {
                 case "add":
                     {
-                        // HandlingErrorString(args[1], args);
                         list.AddTask(args[1]);
                         break;
                     }
                 case "update":
                     {
-                        // HandlingErrorInt(Convert.ToInt32(args[1]), args);
-                        // HandlingErrorString(args[2], args);
                         list.EditTaskDescription(Convert.ToInt32(args[1]), args[2]);
                         break;
                     }
                 case "delete":
                     {
-                        // HandlingErrorInt(Convert.ToInt32(args[1]), args);
                         list.DeleteTask(Convert.ToInt32(args[1]));
                         break;
                     }
@@ -43,24 +39,7 @@ namespace TaskTrackerCSharp
                 default: HelpMessage(); break;
             }
         }
-        void HandlingErrorInt<T>(T t, string[] args)
-        {
-            if (!(t is int))
-            {
-                Console.WriteLine("Wrong date type. Use command again.");
-                Start(args);
-            }
-        }
-
-        void HandlingErrorString<T>(T t, string[] args)
-        {
-            if (!(t is string))
-            {
-                Console.WriteLine("Wrong date type. Use command again.");
-                Start(args);
-            }
-        }
-
+        
         void HelpMessage()
         {
             Console.WriteLine("Usage: task-cli <command> [options]... ");

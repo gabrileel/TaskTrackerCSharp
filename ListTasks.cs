@@ -38,6 +38,7 @@ namespace TaskTrackerCSharp
                 {
                     task.Description = description;
                     task.UpdatedAt = actualDate;
+                    SerializeListToJson();
                     break;
                 }
             }
@@ -56,6 +57,7 @@ namespace TaskTrackerCSharp
                             {
                                 task.Status = EStatus.InProgress;
                                 task.UpdatedAt = actualDate;
+                                SerializeListToJson();
                                 break;
                             }
                         }
@@ -69,6 +71,7 @@ namespace TaskTrackerCSharp
                             {
                                 task.Status = EStatus.InProgress;
                                 task.UpdatedAt = actualDate;
+                                SerializeListToJson();
                                 break;
                             }
                         }
