@@ -26,9 +26,7 @@ namespace TaskTrackerCSharp
             newTask.UpdatedAt = actualDate;
             newTask.Status = EStatus.Todo;
             tasks.Add(newTask);
-            fileLocation = $"task{idTask}.json";
-            jsonSerialize = JsonSerializer.Serialize(newTask);
-            File.WriteAllText(fileLocation, jsonSerialize);
+            SerializeListToJson();
         }
 
         public void EditTaskDescription(int id, string description)
@@ -85,17 +83,9 @@ namespace TaskTrackerCSharp
         {
             foreach (var task in tasks)
             {
-                if (status == EStatus.Todo)
+                if (task.Status == status)
                 {
-                    PrintTaskInfo(task);
-                }
-                else if (status == EStatus.InProgress)
-                {
-                    PrintTaskInfo(task);
-                }
-                else if (status == EStatus.Done)
-                {
-                    PrintTaskInfo(task);
+                    PrintTaskInfo(task);  
                 }
             }
         }
@@ -123,7 +113,17 @@ namespace TaskTrackerCSharp
                     tasks.Remove(task);
                 }
             }
-            File.Delete($"task{id}.json");
+            SerializeListToJson();
+        }
+        void SerializeListToJson(string fileLocation = "")
+        {
+            fileLocation += $"list{DateTime.Now.ToString("hh:mm:ss:f")}.json";
+            string jsonSerialize = "";
+            foreach (var task in tasks)
+            {
+                jsonSerialize += JsonSerializer.Serialize(task);
+            }
+            File.WriteAllText(fileLocation, jsonSerialize);
         }
     }
 }
