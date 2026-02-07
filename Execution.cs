@@ -35,10 +35,12 @@ namespace TaskTrackerCSharp
                         }
                     case "mark-in-progress":
                         {
+                            list.EditTaskStatus(EStatus.InProgress, Convert.ToInt32(args[1]));
                             break;
                         }
                     case "mark-done":
                         {
+                            list.EditTaskStatus(EStatus.Done, Convert.ToInt32(args[1]));
                             break;
                         }
                     default: HelpMessage(); break;
