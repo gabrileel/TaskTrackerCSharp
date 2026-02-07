@@ -9,37 +9,80 @@ namespace TaskTrackerCSharp
         }
         void HandlingCommands(string[] args, ListTasks list)
         {
-            if (args.Length == 1)
+            if (CheckArgsEmpty(args) == false)
+            {
+                switch (args[0])
+                {
+                    case "add":
+                        {
+                            list.AddTask(args[1]);
+                            break;
+                        }
+                    case "update":
+                        {
+                            list.EditTaskDescription(Convert.ToInt32(args[1]), args[2]);
+                            break;
+                        }
+                    case "delete":
+                        {
+                            list.DeleteTask(Convert.ToInt32(args[1]));
+                            break;
+                        }
+                    case "list":
+                        {
+                            CheckFilterList(args[1], list);
+                            break;
+                        }
+                    case "mark-in-progress":
+                        {
+                            break;
+                        }
+                    case "mark-done":
+                        {
+                            break;
+                        }
+                    default: HelpMessage(); break;
+                }
+            }
+        }
+        bool CheckArgsEmpty(string[] args)
+        {
+            if (args.Length == 0)
             {
                 HelpMessage();
+                return true;
             }
-            switch (args[0])
+            return false;
+        }
+
+        void CheckFilterList(string arg, ListTasks list)
+        {
+            switch (arg)
             {
-                case "add":
+                case "todo":
                     {
-                        list.AddTask(args[1]);
+                        list.ShowListFilter(EStatus.Todo);
                         break;
                     }
-                case "update":
+                case "in-progress":
                     {
-                        list.EditTaskDescription(Convert.ToInt32(args[1]), args[2]);
+                        list.ShowListFilter(EStatus.InProgress);
                         break;
                     }
-                case "delete":
+                case "done":
                     {
-                        list.DeleteTask(Convert.ToInt32(args[1]));
+                        list.ShowListFilter(EStatus.Done);
                         break;
                     }
-                case "list":
+                case "":
                     {
+                        list.ShowFullList();
                         break;
                     }
-                case "mark-in-progress": break;
-                case "mark-done": break;
                 default: HelpMessage(); break;
             }
         }
-        
+
         void HelpMessage()
         {
             Console.WriteLine("Usage: task-cli <command> [options]... ");

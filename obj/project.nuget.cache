@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "UAU6nsbLPwU=",
+  "dgSpecHash": "cVMB/NU3Sc4=",
   "success": true,
   "projectFilePath": "/home/gab/Documentos/programas/programas csharp/TaskTrackerCSharp/TaskTrackerCSharp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/gab/.nuget/packages/microsoft.net.illink.tasks/10.0.2/microsoft.net.illink.tasks.10.0.2.nupkg.sha512",
+    "/home/gab/.nuget/packages/microsoft.netcore.app.runtime.linux-x64/10.0.2/microsoft.netcore.app.runtime.linux-x64.10.0.2.nupkg.sha512",
+    "/home/gab/.nuget/packages/microsoft.aspnetcore.app.runtime.linux-x64/10.0.2/microsoft.aspnetcore.app.runtime.linux-x64.10.0.2.nupkg.sha512",
+    "/home/gab/.nuget/packages/microsoft.netcore.app.host.linux-x64/10.0.2/microsoft.netcore.app.host.linux-x64.10.0.2.nupkg.sha512"
+  ],
   "logs": []
 }
