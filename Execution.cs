@@ -9,23 +9,29 @@ namespace TaskTrackerCSharp
         }
         void HandlingCommands(string[] args, ListTasks list)
         {
+            if (args.Length == 1)
+            {
+                HelpMessage();
+            }
             switch (args[0])
             {
                 case "add":
                     {
-                        HandlingErrorString(args[1], args);
+                        // HandlingErrorString(args[1], args);
                         list.AddTask(args[1]);
                         break;
                     }
                 case "update":
                     {
-                        HandlingErrorInt(Convert.ToInt32(args[1]), args);
-                        HandlingErrorString(args[2], args);
+                        // HandlingErrorInt(Convert.ToInt32(args[1]), args);
+                        // HandlingErrorString(args[2], args);
+                        list.EditTaskDescription(Convert.ToInt32(args[1]), args[2]);
                         break;
                     }
                 case "delete":
                     {
-                        HandlingErrorInt(Convert.ToInt32(args[1]), args);
+                        // HandlingErrorInt(Convert.ToInt32(args[1]), args);
+                        list.DeleteTask(Convert.ToInt32(args[1]));
                         break;
                     }
                 case "list":
